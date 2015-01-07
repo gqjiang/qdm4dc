@@ -1,0 +1,990 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY mms "http://rdf.cdisc.org/mms#" >
+    <!ENTITY icd "http://id.who.int/icd/schema/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY qdm "http://rdf.healthit.gov/qdm/schema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://id.who.int/icd/schema/"
+     xml:base="http://id.who.int/icd/schema/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:qdm="http://rdf.healthit.gov/qdm/schema#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:mms="http://rdf.cdisc.org/mms#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:icd="http://id.who.int/icd/schema/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://id.who.int/icd/schema/">
+        <owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
+        <skos:note rdf:datatype="&xsd;string">The WHO ICD Content Model Schema imports the other schemas.</skos:note>
+        <skos:prefLabel rdf:datatype="&xsd;string">WHO ICD Content Model Schema 1.0</skos:prefLabel>
+        <skos:definition rdf:datatype="&xsd;string">WHO ICD Content Model Schema.</skos:definition>
+        <dc:creator rdf:datatype="&xsd;string">WHO ICD-11 Semantic Technology Project</dc:creator>
+        <owl:imports rdf:resource="http://rdf.healthit.gov/qdm/element"/>
+        <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+        <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://id.who.int/icd/schema/describedBy -->
+
+    <owl:ObjectProperty rdf:about="&icd;describedBy">
+        <rdfs:domain rdf:resource="&icd;DiagnosticCriteria"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://id.who.int/icd/schema/using -->
+
+    <owl:ObjectProperty rdf:about="&icd;using">
+        <rdfs:domain rdf:resource="&qdm;QDMDataModel"/>
+        <rdfs:range rdf:resource="&qdm;QDMValueSet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://id.who.int/icd/schema/BodySite -->
+
+    <owl:Class rdf:about="&icd;BodySite">
+        <rdfs:label rdf:datatype="&xsd;string">Body Site</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;BodySystemsStructureDescription"/>
+        <skos:definition rdf:datatype="&xsd;string">The most specific level of the topographic location or the anatomical structure where the health-related problem can be found relevant to the condition.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://id.who.int/icd/schema/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/BodySystem -->
+
+    <owl:Class rdf:about="&icd;BodySystem">
+        <rdfs:label rdf:datatype="&xsd;string">Body System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;BodySystemsStructureDescription"/>
+        <skos:definition rdf:datatype="&xsd;string">An organizing principle that relates to common physiological systems that have been used to reflect the chapters of the ICD.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://id.who.int/icd/schema/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/BodySystemsStructureDescription -->
+
+    <owl:Class rdf:about="&icd;BodySystemsStructureDescription">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/CausalAgents -->
+
+    <owl:Class rdf:about="&icd;CausalAgents">
+        <rdfs:label rdf:datatype="&xsd;string">Causal Agents</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;CausalProperties"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/CausalMechanisms -->
+
+    <owl:Class rdf:about="&icd;CausalMechanisms">
+        <rdfs:label rdf:datatype="&xsd;string">Causal Mechanisms</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;CausalProperties"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/CausalProperties -->
+
+    <owl:Class rdf:about="&icd;CausalProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Child -->
+
+    <owl:Class rdf:about="&icd;Child">
+        <rdfs:label rdf:datatype="&xsd;string">Child</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;ClassificationProperties"/>
+        <skos:definition rdf:datatype="&xsd;string">Child.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://id.who.int/icd/schema/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/ClassificationProperties -->
+
+    <owl:Class rdf:about="&icd;ClassificationProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Definition -->
+
+    <owl:Class rdf:about="&icd;Definition">
+        <rdfs:label rdf:datatype="&xsd;string">Definition</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;TextualDefinitions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/DiagnosticCriteria -->
+
+    <owl:Class rdf:about="&icd;DiagnosticCriteria">
+        <rdfs:label rdf:datatype="&xsd;string">Diagnostic Criteria</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristic"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#MedicationActive"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Exclusion -->
+
+    <owl:Class rdf:about="&icd;Exclusion">
+        <rdfs:subClassOf rdf:resource="&icd;Terms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/FunctioningProperties -->
+
+    <owl:Class rdf:about="&icd;FunctioningProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/GenomicCharacteristics -->
+
+    <owl:Class rdf:about="&icd;GenomicCharacteristics">
+        <rdfs:label rdf:datatype="&xsd;string">Genomic Characteristics</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;CausalProperties"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/ICDContentModel -->
+
+    <owl:Class rdf:about="&icd;ICDContentModel">
+        <rdfs:label rdf:datatype="&xsd;string">ICD Content Model</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&mms;AdministeredItem"/>
+        <skos:definition rdf:datatype="&xsd;string">ICD Content Model Element.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://id.who.int/icd/schema/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Inclusion -->
+
+    <owl:Class rdf:about="&icd;Inclusion">
+        <rdfs:subClassOf rdf:resource="&icd;Terms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/InvestigationFindings -->
+
+    <owl:Class rdf:about="&icd;InvestigationFindings">
+        <rdfs:label rdf:datatype="&xsd;string">Investigation Findings</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;ManifestationProperties"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/LongDefnition -->
+
+    <owl:Class rdf:about="&icd;LongDefnition">
+        <rdfs:subClassOf rdf:resource="&icd;TextualDefinitions"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/ManifestationProperties -->
+
+    <owl:Class rdf:about="&icd;ManifestationProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/NarrowerTerm -->
+
+    <owl:Class rdf:about="&icd;NarrowerTerm">
+        <rdfs:subClassOf rdf:resource="&icd;Terms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Parent -->
+
+    <owl:Class rdf:about="&icd;Parent">
+        <rdfs:label rdf:datatype="&xsd;string">Parent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;ClassificationProperties"/>
+        <skos:definition rdf:datatype="&xsd;string">A higher level entity that covers the full range or scope of another entity (e.g. myocardial infarction is a myocardial disorder).</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://id.who.int/icd/schema/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/SeverityOfSubtypeProperties -->
+
+    <owl:Class rdf:about="&icd;SeverityOfSubtypeProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/SignsAndSymptoms -->
+
+    <owl:Class rdf:about="&icd;SignsAndSymptoms">
+        <rdfs:label rdf:datatype="&xsd;string">Signs and Symptoms</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;ManifestationProperties"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/SpecificCondictionProperties -->
+
+    <owl:Class rdf:about="&icd;SpecificCondictionProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Synonym -->
+
+    <owl:Class rdf:about="&icd;Synonym">
+        <rdfs:subClassOf rdf:resource="&icd;Terms"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/TemporalProperties -->
+
+    <owl:Class rdf:about="&icd;TemporalProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Terms -->
+
+    <owl:Class rdf:about="&icd;Terms">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/TextualDefinitions -->
+
+    <owl:Class rdf:about="&icd;TextualDefinitions">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Title -->
+
+    <owl:Class rdf:about="&icd;Title">
+        <rdfs:label rdf:datatype="&xsd;string">Title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/TreatmentProperties -->
+
+    <owl:Class rdf:about="&icd;TreatmentProperties">
+        <rdfs:subClassOf rdf:resource="&icd;ICDContentModel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://id.who.int/icd/schema/Type -->
+
+    <owl:Class rdf:about="&icd;Type">
+        <rdfs:subClassOf rdf:resource="&icd;ClassificationProperties"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#DiagnosisActive -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#DiagnosisActive">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.Laterality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.Ordinality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.AnatomicalLocationSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosisActive.Severity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.Method"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.FacilityLocation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.Status"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.Reason"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.RadiationDuration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.RadiationDosage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#DiagnosticStudyPerformed.Result"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.Reason"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.Result"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.Status"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#LaboratoryTestPerformed.Method"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#PatientCharacteristic -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#PatientCharacteristic">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicSex.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicBirthdate.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicClinicalTrialParticipant.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicClinicalTrialParticipant.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristic.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicSex.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicClinicalTrialParticipant.Reason"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristic.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicBirthdate.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicExpired.Cause"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicPayer.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicPayer.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicExpired.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PatientCharacteristicExpired.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.Method"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.Result"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.Reason"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.AnatomicalLocationSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#PhysicalExamPerformed.AnatomicalApproachSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#ProcedurePerformed -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#ProcedurePerformed">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.Reason"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.IncisionDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.AnatomicalApproachSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.RadiationDosage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.Ordinality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.AnatomicalLocationSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.Result"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.Status"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.Method"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedurePerformed.RadiationDuration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#ProcedureRecommended -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#ProcedureRecommended">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.AnatomicalLocationSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.Method"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.Reason"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.AnatomicalApproachSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#ProcedureRecommended.Ordinality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/element#SymptomActive -->
+
+    <rdf:Description rdf:about="http://rdf.healthit.gov/qdm/element#SymptomActive">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.StopDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.StartDatetime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.NegationRationale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.Ordinality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.ProviderPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.PatientPreference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;describedBy"/>
+                <owl:someValuesFrom rdf:resource="http://rdf.healthit.gov/qdm/element#SymptomActive.Severity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMDatatype -->
+
+    <rdf:Description rdf:about="&qdm;QDMDatatype">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&icd;using"/>
+                <owl:someValuesFrom rdf:resource="&qdm;QDMValueSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
