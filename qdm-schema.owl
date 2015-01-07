@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY mms "http://rdf.cdisc.org/mms#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY qdm "http://rdf.healthit.gov/qdm/schema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://rdf.healthit.gov/qdm/schema#"
+     xml:base="http://rdf.healthit.gov/qdm/schema"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:qdm="http://rdf.healthit.gov/qdm/schema#"
+     xmlns:mms="http://rdf.cdisc.org/mms#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="http://rdf.healthit.gov/qdm/schema">
+        <owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
+        <dc:creator rdf:datatype="&xsd;string">PheMA QDM Semantic Technology Project</dc:creator>
+        <skos:prefLabel rdf:datatype="&xsd;string">QDM Schema 1.0</skos:prefLabel>
+        <skos:definition rdf:datatype="&xsd;string">The NQF QDM Schema defines additional elements that are not part of the generic meta-model schema or the Controlled Terminology schema, and that may be applied across the different CDISC standards.</skos:definition>
+        <skos:note rdf:datatype="&xsd;string">The NQF QDM Schema imports the other schemas, so it is sufficient for any other QDM data standards file to import only this schema.</skos:note>
+        <owl:imports rdf:resource="http://rdf.cdisc.org/mms"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#DataFlowAttribute -->
+
+    <owl:Class rdf:about="&qdm;DataFlowAttribute">
+        <rdfs:label rdf:datatype="&xsd;string">Data Flow Attribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMAttribute"/>
+        <skos:definition rdf:datatype="&xsd;string">Data flow attributes provide specific detail about the location of data represented by a QDM element.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#DatatypeSpecificAttribute -->
+
+    <owl:Class rdf:about="&qdm;DatatypeSpecificAttribute">
+        <rdfs:label rdf:datatype="&xsd;string">Datatype-Specific Attribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMAttribute"/>
+        <skos:definition rdf:datatype="&xsd;string">Datatype-specific attributes provide detail about a QDM element based on its datatype.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMAttribute -->
+
+    <owl:Class rdf:about="&qdm;QDMAttribute">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Attribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">An attribute provides specific detail about a QDM element.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMCategory -->
+
+    <owl:Class rdf:about="&qdm;QDMCategory">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Category</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">A category consists of a single clinical concept identified by a value set. A category is the highest level of definition for a QDM element.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMCodeSystem -->
+
+    <owl:Class rdf:about="&qdm;QDMCodeSystem">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Code System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">A code system is a collection of coded concepts with definitions from a particular taxonomy, vocabulary, or classification system. Concepts from a code system are used in value sets.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMComparisonOperator -->
+
+    <owl:Class rdf:about="&qdm;QDMComparisonOperator">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Comparison Operator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM Comparison Operator.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMDataModel -->
+
+    <owl:Class rdf:about="&qdm;QDMDataModel">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Data Model Element</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&mms;AdministeredItem"/>
+        <skos:definition rdf:datatype="&xsd;string">The QDM consists of criteria for data elements, relationships for relating data element criteria to each other, and functions for filtering criteria to the subset of data elements that are of interest.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMDatatype -->
+
+    <owl:Class rdf:about="&qdm;QDMDatatype">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Datatype</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">A datatype is the context in which each category is used to describe a part of the clinical care process.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMElement -->
+
+    <owl:Class rdf:about="&qdm;QDMElement">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Element</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">A QDM element encapsulates a certain category with an associated datatype. It is a discrete unit of information used in quality measurement to describe part of the clinical care process, including a clinical entity and its context of use.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMFunction -->
+
+    <owl:Class rdf:about="&qdm;QDMFunction">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Function</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM Function.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMGeneralRelationshipOperator -->
+
+    <owl:Class rdf:about="&qdm;QDMGeneralRelationshipOperator">
+        <rdfs:label rdf:datatype="&xsd;string">QDM General Relationship Operator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM General Relationship Operator.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMInlineComment -->
+
+    <owl:Class rdf:about="&qdm;QDMInlineComment">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Inline Comment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">Sometimes a measure developer may want to provide additional clarity to a difficult or complex section of logic. The QDM allows measure developers to do this by using inline comments.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMLogic -->
+
+    <owl:Class rdf:about="&qdm;QDMLogic">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Logic Element</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&mms;AdministeredItem"/>
+        <skos:definition rdf:datatype="&xsd;string">The logic module of QDM.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMLogicalOperator -->
+
+    <owl:Class rdf:about="&qdm;QDMLogicalOperator">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Logical Operator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM Logical Operator.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMOperatorPrecedence -->
+
+    <owl:Class rdf:about="&qdm;QDMOperatorPrecedence">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Operator Precedence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM Operator Precedence.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMSpecificOccurrence -->
+
+    <owl:Class rdf:about="&qdm;QDMSpecificOccurrence">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Specific Occurrence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">When a QDM element is used in a measure, the intended interpretation assumes that the measure is looking for any instance (specific occurrence) of a concept that matches the QDM element’s criteria.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMSubsetOperator -->
+
+    <owl:Class rdf:about="&qdm;QDMSubsetOperator">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Subset Operator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM Subset Operator.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMTemporalOperator -->
+
+    <owl:Class rdf:about="&qdm;QDMTemporalOperator">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Temporal Operator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMLogic"/>
+        <skos:definition rdf:datatype="&xsd;string">QDM Temporal Operator.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMValueSet -->
+
+    <owl:Class rdf:about="&qdm;QDMValueSet">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Value Set</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">A value set is a set of values that contain specific codes derived from a particular code system.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#QDMVariable -->
+
+    <owl:Class rdf:about="&qdm;QDMVariable">
+        <rdfs:label rdf:datatype="&xsd;string">QDM Variable</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMDataModel"/>
+        <skos:definition rdf:datatype="&xsd;string">Sometimes measure developers need to use a defined set of data elements in multiple pieces of logic throughout the measure. Rather than copy the entire set of data elements in every place they are needed, measure developers can define the set once and assign it to a variable.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#ValueSetDefiningQDMAttribute -->
+
+    <owl:Class rdf:about="&qdm;ValueSetDefiningQDMAttribute">
+        <rdfs:label rdf:datatype="&xsd;string">Value Set that Defines QDM Attribute</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMValueSet"/>
+        <skos:definition rdf:datatype="&xsd;string">A value set that Defines QDM Attribute.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#ValueSetDefiningQDMCategory -->
+
+    <owl:Class rdf:about="&qdm;ValueSetDefiningQDMCategory">
+        <rdfs:label rdf:datatype="&xsd;string">Value Set that Defines QDM Category</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMValueSet"/>
+        <skos:definition rdf:datatype="&xsd;string">A value set that Defines QDM Category.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.healthit.gov/qdm/schema#ValueSetGrouping -->
+
+    <owl:Class rdf:about="&qdm;ValueSetGrouping">
+        <rdfs:label rdf:datatype="&xsd;string">Value Set Grouping</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&qdm;QDMValueSet"/>
+        <skos:definition rdf:datatype="&xsd;string">multiple value sets can be combined into one value set called a value set grouping.</skos:definition>
+        <rdfs:isDefinedBy rdf:resource="http://rdf.healthit.gov/qdm/schema"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
